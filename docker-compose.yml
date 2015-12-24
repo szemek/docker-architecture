@@ -1,0 +1,20 @@
+balancer:
+  container_name: balancer
+  build: ./balancer
+  ports:
+    - "4001:80"
+  links:
+    - app1
+    - app2
+
+app1:
+  container_name: app1
+  build: ./static
+  ports:
+    - "4002:80"
+
+app2:
+  container_name: app2
+  build: ./static
+  ports:
+    - "4003:80"
