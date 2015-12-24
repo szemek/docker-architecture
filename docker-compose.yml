@@ -2,7 +2,7 @@ balancer:
   container_name: balancer
   build: ./balancer
   ports:
-    - "4001:80"
+    - "3000:80"
   links:
     - app1
     - app2
@@ -10,16 +10,16 @@ balancer:
 app1:
   container_name: app1
   build: ./static
-  ports:
-    - "4002:80"
+  expose:
+    - "80"
   links:
     - database
 
 app2:
   container_name: app2
   build: ./static
-  ports:
-    - "4003:80"
+  expose:
+    - "80"
   links:
     - database
 
