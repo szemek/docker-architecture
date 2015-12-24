@@ -18,6 +18,8 @@ app1:
     - database
   env_file:
     - app/.env
+  volumes_from:
+    - cache
 
 app2:
   container_name: app2
@@ -26,6 +28,12 @@ app2:
     - "80"
   links:
     - database
+
+cache:
+  container_name: cache
+  image: busybox
+  volumes:
+    - /cache
 
 database:
   container_name: postgres
