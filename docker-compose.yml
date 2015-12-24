@@ -12,9 +12,17 @@ app1:
   build: ./static
   ports:
     - "4002:80"
+  links:
+    - database
 
 app2:
   container_name: app2
   build: ./static
   ports:
     - "4003:80"
+  links:
+    - database
+
+database:
+  container_name: postgres
+  image: postgres
