@@ -9,11 +9,15 @@ balancer:
 
 app1:
   container_name: app1
-  build: ./static
+  build: ./app
   expose:
     - "80"
+  ports:
+    - "2222:22"
   links:
     - database
+  env_file:
+    - app/.env
 
 app2:
   container_name: app2
