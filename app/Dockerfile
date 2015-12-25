@@ -4,6 +4,7 @@ FROM phusion/passenger-ruby22
 ENV HOME /root
 
 WORKDIR /home/app/site
+
 # Use baseimage-docker's init system
 CMD ["/sbin/my_init"]
 
@@ -25,4 +26,4 @@ RUN chown -R app:app /home/app/site
 RUN rm -f /etc/service/sshd/down
 COPY id_rsa.pub /root/.ssh/authorized_keys
 
-COPY bundle.sh /etc/my_init.d/bundle.sh
+COPY bundle.sh /etc/my_init.d/60_bundle.sh
