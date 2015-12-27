@@ -2,8 +2,13 @@ FROM nginx
 
 RUN apt-get update -qq && apt-get install -y curl
 
-COPY default.conf etc/nginx/conf.d/default.conf
+RUN apt-get install -y ruby
 
-COPY init /opt/init
+RUN mkdir -p /opt/scripts
 
-CMD ["/opt/init"]
+COPY init /opt/scripts/init
+
+COPY configure.rb /opt/scripts/configure.rb
+COPY default.conf.erb /opt/scripts/default.conf.erb
+
+CMD ["/opt/scripts/init"]

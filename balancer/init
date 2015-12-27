@@ -1,2 +1,5 @@
 #!/bin/sh
+cat /etc/hosts
+ruby /opt/scripts/configure.rb
+cat /etc/nginx/conf.d/default.conf
 exec nginx -g "daemon off;"
