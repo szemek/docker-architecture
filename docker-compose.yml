@@ -4,30 +4,19 @@ balancer:
   ports:
     - "3000:80"
   links:
-    - app1
-    - app2
+    - app
+  restart: always
 
-app1:
-  container_name: app1
+app:
   build: ./app
   expose:
     - "80"
-  ports:
-    - "2222:22"
   links:
     - database
   env_file:
     - app/.env
   volumes_from:
     - cache
-
-app2:
-  container_name: app2
-  build: ./static
-  expose:
-    - "80"
-  links:
-    - database
 
 cache:
   container_name: cache
